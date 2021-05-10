@@ -1,0 +1,1 @@
+docker exec app-security tarantoolctl restart security-server.lua

@@ -1,0 +1,3 @@
+@docker stop app-security
+@docker rm app-security
+@echo Server Stopped...

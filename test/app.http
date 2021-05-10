@@ -1,0 +1,55 @@
+@servername =  http://localhost:8081
+
+### Test Ping
+GET {{servername}}/ping HTTP/1.1
+
+### Test create app
+POST {{servername}}/app HTTP/1.1
+Content-Type: application/json
+
+{
+ 	"appid" 	: "km001",
+	"name" 		: "klinik-mobileapp",
+	"appdescr"  : "Aplikasi Klinik - Mobile Version",
+	"isactive"  : true
+}
+
+### Test create app
+POST {{servername}}/app HTTP/1.1
+Content-Type: application/json
+
+{
+ 	"appid" 	: "kw001",
+	"name" 		: "klinik-webapp",
+	"appdescr"  : "Aplikasi Klinik - Web Version",
+	"isactive"  : true
+}
+
+### Test create app
+POST {{servername}}/app HTTP/1.1
+Content-Type: application/json
+
+{
+ 	"appid" 	: "kw002",
+	"name" 		: "klinik-webapp2",
+	"appdescr"  : "Aplikasi Klinik - Web Version"
+}
+
+### Test update app
+PUT {{servername}}/app/kw002 HTTP/1.1
+Content-Type: application/json
+
+{
+ 	"appid" 	: "kw002",
+	"name" 		: "klinik-webapp",
+	"appdescr"  : "Aplikasi Klinik - Web Version"
+}
+
+### Test delete app
+DELETE {{servername}}/app/kw002 HTTP/1.1
+
+### Test Get App
+GET {{servername}}/app/kw002 HTTP/1.1
+
+### Test Get List App
+GET {{servername}}/app HTTP/1.1
