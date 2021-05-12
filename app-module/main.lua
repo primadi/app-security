@@ -15,6 +15,13 @@ server:route({path = '/app/:appid', method = 'GET'}, app.get)
 server:route({path = '/app/:appid', method = 'PUT'}, app.replace)
 server:route({path = '/app/:appid', method = 'DELETE'}, app.delete)
 
+local appsetting = require('controllers.appsetting')
+server:route({path = '/app/:appid/setting', method = 'POST'}, appsetting.insert)
+server:route({path = '/app/:appid/setting', method = 'GET'}, appsetting.getlist)
+server:route({path = '/app/:appid/setting/:settingid', method = 'GET'}, appsetting.get)
+server:route({path = '/app/:appid/setting/:settingid', method = 'PUT'}, appsetting.replace)
+server:route({path = '/app/:appid/setting/:settingid', method = 'DELETE'}, appsetting.delete)
+
 local appmodule = require('controllers.appmodule')
 server:route({path = '/app/:appid/module', method = 'POST'}, appmodule.insert)
 server:route({path = '/app/:appid/module', method = 'GET'}, appmodule.getlist)

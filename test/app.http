@@ -49,7 +49,7 @@ Content-Type: application/json
 DELETE {{servername}}/app/kw002 HTTP/1.1
 
 ### Test Get App
-GET {{servername}}/app/kw002 HTTP/1.1
+GET {{servername}}/app/kw001 HTTP/1.1
 
 ### Test Get List App
 GET {{servername}}/app HTTP/1.1

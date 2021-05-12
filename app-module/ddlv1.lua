@@ -1,22 +1,37 @@
 box.once("ddlv1", function () 
+    local log = require('log')
+    log.info('DDLV1 Created')
+
     box.execute([[
         CREATE TABLE app(
-            appid STRING PRIMARY KEY,
+            appid STRING,
             name STRING,
             appdescr STRING,
-            isactive BOOLEAN
+            isactive BOOLEAN,
+            PRIMARY KEY(appid)
+        )
+    ]])
+
+    box.execute([[
+        CREATE TABLE appsetting(
+            appid STRING,
+            settingid STRING,
+            value STRING,
+            settingdescr STRING,
+            PRIMARY KEY(appid, settingid)
         )
     ]])
 
     box.execute([[
         CREATE TABLE appmodule(
-            appid STRING PRIMARY KEY,
-            moduleid STRING PRIMARY KEY,
+            appid STRING,
+            moduleid STRING,
             modulename STRING,
             moduleurl STRING,
             moduledescr STRING,
             isactive BOOLEAN,
-            moduleorder UNSIGNED
+            moduleorder UNSIGNED,
+            PRIMARY KEY(appid, moduleid)
         )
     ]])
 
@@ -28,93 +43,66 @@ box.once("ddlv1", function ()
         CREATE INDEX idx_appmodule_moduleurl ON appmodule(moduleurl)
     ]])
 
+    -- appmodulevar -> 0: string, 1: number, 2: date
     box.execute([[
-        CREATE TABLE appmodulevar {
-            appid STRING PRIMARY KEY,
-            moduleid STRING PRIMARY KEY,
-            varname STRING PRIMARY KEY,
+        CREATE TABLE appmodulevar(
+            appid STRING,
+            moduleid STRING,
+            varname STRING,
             defaultvalue STRING,
-            vartype UNSIGNED,   -- 0: string, 1: number, 2: date
-            vardescr STRING
-        }
+            vartype UNSIGNED,
+            vardescr STRING,
+            PRIMARY KEY(appid, moduleid, varname)
+        )
     ]])
 
-    box.execute([[
-        CREATE TABLE approle {
-            appid STRING PRIMARY KEY,
-            roleid STRING PRIMARY KEY,
+   box.execute([[
+        CREATE TABLE approle(
+            appid STRING,
+            roleid STRING,
             rolename STRING,
-            description STRING
-        }
+            description STRING,
+            PRIMARY KEY(appid, roleid)
+        )
     ]])
 
     box.execute([[
-        CREATE TABLE approlemodule {
-            appid STRING PRIMARY KEY,
-            roleid STRING PRIMARY KEY,
-            moduleid STRING PRIMARY KEY,
-        }
+        CREATE TABLE approlemodule(
+            appid STRING,
+            roleid STRING,
+            moduleid STRING,
+            PRIMARY KEY(appid, roleid, moduleid)
+        )
     ]])
 
     box.execute([[
-        CREATE TABLE approlemodulevar {
-            appid STRING PRIMARY KEY,
-            roleid STRING PRIMARY KEY,
-            moduleid STRING PRIMARY KEY,
-            varname STRING PRIMARY KEY,
+        CREATE TABLE approlemodulevar(
+            appid STRING,
+            roleid STRING,
+            moduleid STRING,
+            varname STRING,
             varvalue STRING,
-        }
+            PRIMARY KEY(appid, roleid, moduleid, varname)
+        )
     ]])
 
     box.execute([[
-        CREATE TABLE client {
-            id STRING PRIMARY KEY,
+        CREATE TABLE client(
+            clientid STRING,
             name STRING,
             email STRING,
-            phonenumber STRING
-        }
+            phonenumber STRING,
+            PRIMARY KEY(clientid)
+        )
     ]])
 
     box.execute([[
-        CREATE TABLE clientapp {
-            clientid STRING PRIMARY KEY,
-            appid STRING PRIMARY KEY,
+        CREATE TABLE clientapp(
+            clientid STRING,
+            appid STRING,
             isactive BOOLEAN,
             expireddate UNSIGNED,
-            isactive BOOLEAN
-        }
+            PRIMARY KEY(clientid, appid)
+        )
     ]])
-    
-    -- box.schema.space.create('app')
-    -- box.space.app:format({
-    --     { name = 'appid', type = 'string' },
-    --     { name = 'name', type = 'string'},
-    --     { name = 'isactive', type = 'boolean'}
-    -- })
-    -- box.space.app:create_index('app_pk', {
-    --     parts = {'appid'}
-    -- })
-
-    -- box.schema.space.create('appmodule')
-    -- box.space.appmodule:format({
-    --     { name = 'appid', type = 'string' },
-    --     { name = 'moduleid', type = 'string'},
-    --     { name = 'modulename', type = 'string'},
-    --     { name = 'moduleurl', type = 'string'},
-    --     { name = 'isactive', type = 'boolean'},
-    --     { name = 'order', type = 'unsigned'}
-    -- })
-    -- box.space.appmodule:create_index('appmodule_pk', {
-    --     parts = {{'appid'}, {'moduleid'}}
-    -- })
-
-    -- box.schema.space.create('client')
-    -- box.space.client:format({
-    --     { name = 'clientid', type = 'string' },
-    --     { name = 'clientname', type = 'string'},
-    --     { name = 'isactive', type = 'boolean'}
-    -- })
-    -- box.space.client:create_index('client_pk', {
-    --     parts = {'clientid'}
-    -- })
 end)
