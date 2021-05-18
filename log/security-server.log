@@ -727,3 +727,63 @@
 2021-05-18 08:16:31.244 [26] main/106/checkpoint_daemon I> scheduled next checkpoint for Tue May 18 09:16:31 2021
 2021-05-18 09:16:31.236 [26] main/106/checkpoint_daemon I> scheduled next checkpoint for Tue May 18 10:16:31 2021
 2021-05-18 10:16:31.238 [26] main/106/checkpoint_daemon I> scheduled next checkpoint for Tue May 18 11:16:31 2021
+2021-05-18 15:26:44.463 [24] main/103/security-server C> Tarantool 2.7.2-0-g4d8c06890
+2021-05-18 15:26:44.464 [24] main/103/security-server C> log level 5
+2021-05-18 15:26:44.464 [24] main/103/security-server I> wal/engine cleanup is paused
+2021-05-18 15:26:44.472 [24] main/103/security-server I> mapping 268435456 bytes for memtx tuple arena...
+2021-05-18 15:26:44.473 [24] main/103/security-server I> Actual slab_alloc_factor calculated on the basis of desired slab_alloc_factor = 1.044274
+2021-05-18 15:26:44.475 [24] main/103/security-server I> mapping 134217728 bytes for vinyl tuple arena...
+2021-05-18 15:26:44.481 [24] main/103/security-server I> instance uuid 6d6f21df-abd4-4f37-8001-e8be5117059f
+2021-05-18 15:26:44.483 [24] main/103/security-server I> initializing an empty data directory
+2021-05-18 15:26:44.522 [24] main/103/security-server I> assigned id 1 to replica 6d6f21df-abd4-4f37-8001-e8be5117059f
+2021-05-18 15:26:44.523 [24] main/103/security-server I> cluster uuid a2469a7e-59d2-4fc5-8534-02529d478d45
+2021-05-18 15:26:44.532 [24] snapshot/101/main I> saving snapshot `/var/lib/tarantool/security-server/00000000000000000000.snap.inprogress'
+2021-05-18 15:26:44.541 [24] snapshot/101/main I> done
+2021-05-18 15:26:44.545 [24] main/103/security-server I> ready to accept requests
+2021-05-18 15:26:44.546 [24] main/105/gc I> wal/engine cleanup is resumed
+2021-05-18 15:26:44.546 [24] main/103/security-server I> set 'log_level' configuration option to 5
+2021-05-18 15:26:44.547 [24] main/106/checkpoint_daemon I> scheduled next checkpoint for Tue May 18 17:17:18 2021
+2021-05-18 15:26:44.550 [24] main/103/security-server I> set 'log_format' configuration option to "plain"
+2021-05-18 15:26:44.563 [24] wal/101/main xlog.c:1050 W> fallocate is not supported, proceeding without it
+2021-05-18 15:26:44.563 [24] main/103/security-server I> DDLV1 Created
+2021-05-18 15:26:44.605 [24] main/103/security-server tarantoolctl:549 E> Start failed: /usr/share/tarantool/utils/entity.lua:432: bad argument #1 to 'pairs' (table expected, got nil)
+2021-05-18 15:26:44.532 [24] snapshot/101/main I> saving snapshot `/var/lib/tarantool/security-server/00000000000000000000.snap.inprogress'
+2021-05-18 15:26:44.541 [24] snapshot/101/main I> done
+2021-05-18 15:26:44.545 [24] main/103/security-server I> ready to accept requests
+2021-05-18 15:26:44.546 [24] main/105/gc I> wal/engine cleanup is resumed
+2021-05-18 15:26:44.546 [24] main/103/security-server I> set 'log_level' configuration option to 5
+2021-05-18 15:26:44.547 [24] main/106/checkpoint_daemon I> scheduled next checkpoint for Tue May 18 17:17:18 2021
+2021-05-18 15:26:44.550 [24] main/103/security-server I> set 'log_format' configuration option to "plain"
+2021-05-18 15:26:44.563 [24] wal/101/main xlog.c:1050 W> fallocate is not supported, proceeding without it
+2021-05-18 15:26:44.563 [24] main/103/security-server I> DDLV1 Created
+2021-05-18 15:26:44.605 [24] main/103/security-server tarantoolctl:549 E> Start failed: /usr/share/tarantool/utils/entity.lua:432: bad argument #1 to 'pairs' (table expected, got nil)
+2021-05-18 15:30:19.203 [24] main/103/security-server C> Tarantool 2.7.2-0-g4d8c06890
+2021-05-18 15:30:19.203 [24] main/103/security-server C> log level 5
+2021-05-18 15:30:19.204 [24] main/103/security-server I> wal/engine cleanup is paused
+2021-05-18 15:30:19.208 [24] main/103/security-server I> mapping 268435456 bytes for memtx tuple arena...
+2021-05-18 15:30:19.209 [24] main/103/security-server I> Actual slab_alloc_factor calculated on the basis of desired slab_alloc_factor = 1.044274
+2021-05-18 15:30:19.210 [24] main/103/security-server I> mapping 134217728 bytes for vinyl tuple arena...
+2021-05-18 15:30:19.215 [24] main/103/security-server I> instance uuid adf4be6d-2caf-4dcd-b44e-5991407a0ce7
+2021-05-18 15:30:19.216 [24] main/103/security-server I> initializing an empty data directory
+2021-05-18 15:30:19.243 [24] main/103/security-server I> assigned id 1 to replica adf4be6d-2caf-4dcd-b44e-5991407a0ce7
+2021-05-18 15:30:19.244 [24] main/103/security-server I> cluster uuid 5eba6ac7-b4c0-4908-9cc3-52466e40fa7e
+2021-05-18 15:30:19.250 [24] snapshot/101/main I> saving snapshot `/var/lib/tarantool/security-server/00000000000000000000.snap.inprogress'
+2021-05-18 15:30:19.255 [24] snapshot/101/main I> done
+2021-05-18 15:30:19.270 [24] main/103/security-server I> ready to accept requests
+2021-05-18 15:30:19.271 [24] main/105/gc I> wal/engine cleanup is resumed
+2021-05-18 15:30:19.272 [24] main/103/security-server I> set 'log_level' configuration option to 5
+2021-05-18 15:30:19.272 [24] main/106/checkpoint_daemon I> scheduled next checkpoint for Tue May 18 17:29:23 2021
+2021-05-18 15:30:19.275 [24] main/103/security-server I> set 'log_format' configuration option to "plain"
+2021-05-18 15:30:19.291 [24] wal/101/main xlog.c:1050 W> fallocate is not supported, proceeding without it
+2021-05-18 15:30:19.292 [24] main/103/security-server I> DDLV1 Created
+2021-05-18 15:30:19.367 [24] main/103/security-server tarantoolctl:549 E> Start failed: /usr/share/tarantool/utils/entity.lua:432: bad argument #1 to 'pairs' (table expected, got nil)
+2021-05-18 15:30:19.250 [24] snapshot/101/main I> saving snapshot `/var/lib/tarantool/security-server/00000000000000000000.snap.inprogress'
+2021-05-18 15:30:19.255 [24] snapshot/101/main I> done
+2021-05-18 15:30:19.270 [24] main/103/security-server I> ready to accept requests
+2021-05-18 15:30:19.271 [24] main/105/gc I> wal/engine cleanup is resumed
+2021-05-18 15:30:19.272 [24] main/103/security-server I> set 'log_level' configuration option to 5
+2021-05-18 15:30:19.272 [24] main/106/checkpoint_daemon I> scheduled next checkpoint for Tue May 18 17:29:23 2021
+2021-05-18 15:30:19.275 [24] main/103/security-server I> set 'log_format' configuration option to "plain"
+2021-05-18 15:30:19.291 [24] wal/101/main xlog.c:1050 W> fallocate is not supported, proceeding without it
+2021-05-18 15:30:19.292 [24] main/103/security-server I> DDLV1 Created
+2021-05-18 15:30:19.367 [24] main/103/security-server tarantoolctl:549 E> Start failed: /usr/share/tarantool/utils/entity.lua:432: bad argument #1 to 'pairs' (table expected, got nil)
