@@ -108,7 +108,7 @@ exports.renderSqlData = function(result, listmaxcount)
             description = 'found',
             count = #data,
             listmaxcount = listmaxcount,
-            lastdata = lastdata,
+            lastdata = 'lastdata',
             result = data
         }
     }

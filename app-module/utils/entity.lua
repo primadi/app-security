@@ -381,7 +381,7 @@ function exports.new(cfg)
             box.begin()
 
             if cfg.beforeDelete ~= nil then
-                local res = cfg.beforeDelete(params)
+                local res = cfg.beforeDelete(key)
                 if res ~= nil then
                     box.rollback()
                     return req:render(data.renderError(res.errcode, res.description))
@@ -401,6 +401,14 @@ function exports.new(cfg)
             end
         
             if status then
+                if cfg.afterDelete ~= nil then
+                    local res = cfg.afterDelete(key)
+                    if res ~= nil then
+                        box.rollback()
+                        return req:render(data.renderError(res.errcode, res.description))
+                    end
+                end
+
                 box.commit()
 
                 local description
