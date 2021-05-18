@@ -1,6 +1,6 @@
 local exports = {}
 
-local function getQueryData(data, fnCreateData)
+local function getDataFromObject(data, fnCreateData)
     if #data == 0 then
         return {}
     end
@@ -11,11 +11,29 @@ local function getQueryData(data, fnCreateData)
     return result
 end
 
+local function getDataFromSql(d)
+    if #d.rows == 0 then
+        return {}
+    end
+
+    local result = {}
+    for i, v in ipairs(d.rows) do
+        local data = {}
+
+        for j, md in ipairs(d.metadata) do
+            data[md.name:lower()] = v[j] 
+        end
+        result[i] = data
+    end
+    return result
+end
+
 local function dataNotFound()
     return {
         json = {
             status = 'ok',
             description = 'not found',
+            count = 0,
             result = {}
         }
     }
@@ -26,6 +44,7 @@ local function dataFound(data)
         json = {
             status = 'ok',
             description = 'found',
+            count = #data,
             result = data
         }
     }
@@ -64,11 +83,44 @@ exports.renderArrayData = function(result, fnGetData)
         return dataNotFound()
     end
     
-    return dataFound(getQueryData(result, fnGetData))
+    return dataFound(getDataFromObject(result, fnGetData))
 end
+
+exports.renderSqlData = function(result, listmaxcount)
+    if result == nil or #result.rows == 0 then
+        return {
+            json = {
+                status = 'ok',
+                description = 'not found',
+                count = 0,
+                listmaxcount = listmaxcount,
+                lastdata = '',
+                result = {}
+            }
+        }
+    end
+
+    local data = getDataFromSql(result)
+
+    return {
+        json = {
+            status = 'ok',
+            description = 'found',
+            count = #data,
+            listmaxcount = listmaxcount,
+            lastdata = lastdata,
+            result = data
+        }
+    }
+end
+
 
 -- set defaultvalue of table if not exists
 exports.setDefaultValues = function(data, defaultvalues)
+    if defaultvalues == nil then
+        return
+    end
+    
     for k, v in pairs(defaultvalues) do
         if data[k] == nil then
             data[k] = v

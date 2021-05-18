@@ -1,4 +1,4 @@
-@servername =  http://localhost:8081
+@servername =  http://localhost:8082
 
 ### Test Ping
 GET {{servername}}/ping HTTP/1.1
@@ -8,7 +8,7 @@ POST {{servername}}/app/km001/setting HTTP/1.1
 Content-Type: application/json
 
 {
- 	"settingid" 	: "companyname"
+ 	"settingid" 	: "companyname4"
 }
 
 ### Test create setting
@@ -28,20 +28,20 @@ Content-Type: application/json
     "value"     : "jln abc"
 }
 
-### Test update app
+### Test update setting
 PUT {{servername}}/app/km001/setting/companyname HTTP/1.1
 Content-Type: application/json
 
 {
     "value"         : "PT ABC",
-    "settingdescr"   : "Company Name"
+    "description"   : "Company Name"
 }
 
-### Test delete app
+### Test delete setting
 DELETE {{servername}}/app/km001/setting/compayname HTTP/1.1
 
-### Test Get App
+### Test Get setting
 GET {{servername}}/app/km001/setting/companyname HTTP/1.1
 
-### Test Get List App
+### Test Get List setting
 GET {{servername}}/app/km001/setting HTTP/1.1

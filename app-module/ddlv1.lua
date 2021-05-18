@@ -6,10 +6,10 @@ box.once("ddlv1", function ()
         CREATE TABLE app(
             appid STRING,
             name STRING,
-            appdescr STRING,
+            description STRING,
             isactive BOOLEAN,
             PRIMARY KEY(appid)
-        )
+        )        
     ]])
 
     box.execute([[
@@ -17,7 +17,7 @@ box.once("ddlv1", function ()
             appid STRING,
             settingid STRING,
             value STRING,
-            settingdescr STRING,
+            description STRING,
             PRIMARY KEY(appid, settingid)
         )
     ]])
@@ -28,7 +28,7 @@ box.once("ddlv1", function ()
             moduleid STRING,
             modulename STRING,
             moduleurl STRING,
-            moduledescr STRING,
+            description STRING,
             isactive BOOLEAN,
             moduleorder UNSIGNED,
             PRIMARY KEY(appid, moduleid)
@@ -51,7 +51,7 @@ box.once("ddlv1", function ()
             varname STRING,
             defaultvalue STRING,
             vartype UNSIGNED,
-            vardescr STRING,
+            description STRING,
             PRIMARY KEY(appid, moduleid, varname)
         )
     ]])
@@ -90,8 +90,11 @@ box.once("ddlv1", function ()
         CREATE TABLE client(
             clientid STRING,
             name STRING,
+            contactperson STRING,
             email STRING,
             phonenumber STRING,
+            description STRING,
+            isactive BOOLEAN,
             PRIMARY KEY(clientid)
         )
     ]])
@@ -104,5 +107,98 @@ box.once("ddlv1", function ()
             expireddate UNSIGNED,
             PRIMARY KEY(clientid, appid)
         )
+    ]])
+
+    box.execute([[
+        CREATE TABLE clientapprole(
+            clientid STRING,
+            appid STRING,
+            roleid STRING,
+            PRIMARY KEY(clientid, appid, roleid)
+        )
+    ]])
+
+    box.execute([[
+        CREATE TABLE clientapprolemodule(
+            clientid STRING,
+            appid STRING,
+            roleid STRING,
+            moduleid STRING,
+            PRIMARY KEY(clientid, appid, roleid, moduleid)
+        )
+    ]])
+
+    box.execute([[
+        CREATE TABLE clientapprolemodulevar(
+            clientid STRING,
+            appid STRING,
+            roleid STRING,
+            moduleid STRING,
+            varname STRING,
+            varvalue STRING,
+            PRIMARY KEY(clientid, appid, roleid, moduleid, varname)
+        )
+    ]])
+
+    box.execute([[
+        CREATE TABLE clientappsetting(
+            clientid STRING,
+            appid STRING,
+            settingid STRING,
+            value STRING,
+            PRIMARY KEY(clientid, appid, settingid)
+        )
+    ]])
+
+    box.execute([[
+        CREATE TABLE clientbranch(
+            clientid STRING,
+            branchid STRING,
+            branchname STRING,
+            address STRING,
+            phonenumber STRING,
+            isactive BOOLEAN,
+            PRIMARY KEY(clientid, branchid)
+        )
+    ]])
+
+    box.execute([[
+        CREATE TABLE clientappuser(
+            clientid STRING,
+            appid STRING,
+            username STRING,
+            password STRING,
+            isactive BOOLEAN,
+            email STRING,
+            phonenumber STRING,
+            PRIMARY KEY(clientid, username)
+        )
+    ]])
+
+    box.execute([[
+        CREATE TABLE clientappuserrolebranch(
+            clientid STRING,
+            appid STRING,
+            username STRING,
+            roleid STRING,
+            branchid STRING,
+            PRIMARY KEY(clientid, appid, username, roleid, branchid)
+        )
+    ]])
+
+    box.execute([[
+        CREATE TABLE session(
+            sessionid STRING,
+            clientid STRING,
+            username STRING,
+            appid STRING
+            roleid STRING,
+            branchid STRING,
+            PRIMARY KEY(sessionid)
+        )
+    ]])
+
+    box.execute([[
+        CREATE INDEX idx_session_username ON session(username)
     ]])
 end)

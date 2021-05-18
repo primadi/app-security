@@ -1,0 +1,1 @@
+docker exec app-security tarantool /usr/share/tarantool/test/%1
